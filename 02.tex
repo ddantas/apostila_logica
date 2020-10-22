@@ -1,0 +1,55 @@
+\chapter{A semântica da Lógica Proposicional}
+
+
+Capítulo 2 de Souza, \textit{Lógica para Ciência da Computação}~\cite{souza_logica_3}.
+
+\vspace{1cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{easylist}
+  & Função: é uma relação entre dois conjuntos que assocua cada elemento do conjunto de entrada a um único elemento do conjunto de saída
+
+\SKIP
+  
+  & Função binária: é uma função em que seu contradomínio possui apenas dois eleentos
+
+\SKIP
+  
+  & Interpretação $I$ é uma função binária tal que:
+  && O domínio de $I$ é constituído pelo conjunto de fórmulas da lógica proposicional.
+  && O contradomínio de $I$ é o conjunto $\{T, F\}$.
+  && $I(\TRUE) = T,  \; I(\FALSE) = F$.
+  && Se $P$ é um símbolo proposicional, $I(P) \in \{T, F\}$.
+
+\SKIP
+  
+  & Interpretação de fórmulas: dadas uma fórmula $E$ e uma interpretação $I$, o significado ou interpretação de $E$, denotado por $I(E)$, é determinado pelas regras:
+  && Se $E = P$, onde $P$ é um símbolo proposicional, então $I(E) = I(P)$, onde $I(P) \in \{T, F\}$.
+  && Se $E = \TRUE$,  então $I(E) = I(\TRUE)  = T$.
+  && Se $E = \FALSE$, então $I(E) = I(\FALSE) = f$.
+  && Seja $H$ uma fórmula, se $E = \NOT H$ então:
+  &&& $I(E) = I(\NOT H) = T \DBIC I(H) = F$.
+  &&& $I(E) = I(\NOT H) = F \DBIC I(H) = T$.
+
+\SKIP
+
+  && Sejam $H$ e $G$ duas fórmulas, se $E = (H \OR G)$ então:
+  &&& $I(H) = T$ ou     $I(G) = T \DBIC I(E) = I(H \OR G) = T$.
+  &&& $I(H) = F$ \;e\;  $I(G) = F \DBIC I(E) = I(H \OR G) = F$.
+  && Sejam $H$ e $G$ duas fórmulas, se $E = (H \AND G)$ então:
+  &&& $I(H) = T$ \;e\;  $I(G) = T \DBIC I(E) = I(H \AND G) = T$.
+  &&& $I(H) = F$ ou     $I(G) = F \DBIC I(E) = I(H \AND G) = F$.
+  && Sejam $H$ e $G$ duas fórmulas, se $E = (H \IMP G)$ então:
+  &&& $I(H) = T$ então  $I(G) = T \DBIC I(E) = I(H \IMP G) = T$.
+  &&& $I(H) = F$ ou     $I(G) = T \DBIC I(E) = I(H \IMP G) = T$.
+  &&& $I(H) = T$ \;e\;  $I(G) = F \DBIC I(E) = I(H \IMP G) = F$.
+  && Sejam $H$ e $G$ duas fórmulas, se $E = (H \BIC G)$ então:
+  &&& $I(H) =    I(G) \DBIC I(E) = I(H \BIC G) = T$.
+  &&& $I(H) \neq I(G) \DBIC I(E) = I(H \BIC G) = F$.
+
+\SKIP
+
+\end{easylist}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{Componentes de um sistema de processamento de imagens}

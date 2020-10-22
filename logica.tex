@@ -1,0 +1,302 @@
+%\documentclass{book}
+\documentclass{report}
+
+\pagenumbering{roman} 
+\pagestyle{empty}
+
+% Notas de aula
+%
+% Template criado em 24/9/2013
+% Daniel Oliveira Dantas
+%
+% Ctrl+x 8 , c = ç
+
+\usepackage[utf8]{inputenc}
+\usepackage[english, brazil]{babel}
+
+\usepackage{listings}
+\lstset{
+  language=C,                     % choose the language of the code
+  numbers=none,                   % where to put the line-numbers
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=10pt,                 % how far the line-numbers are from the code
+  %backgroundcolor=\color{white}, % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                 % show the filename of files included with \lstinputlisting;
+}
+
+% Adicionado para permitir a criação de listas com vários graus de aninhamento
+% ddantas, 24/03/2020
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[ampersand]{easylist}
+\ListProperties(Hide=100, Hang=true, Progressive=3ex, Style*=--- ,
+Style2*=$\bullet$ ,Style3*=$\circ$ ,Style4*=\tiny$\blacksquare$ )
+
+% Adicionado para permitir a inserção de figuras
+% ddantas, 24/03/2020
+\usepackage{graphicx}
+
+% Adicionado para permitir a inserção de figuras
+% ddantas, 31/03/2020
+\usepackage{subcaption}
+
+%formatacao
+
+\newcommand{\TAB}{{\hspace*{1cm}}}
+\newcommand{\NEWLINE}{~\\}
+\newcommand{\BV}{\begin{verbatim}}
+\newcommand{\EV}{\end{verbatim}}
+
+%tipos de dados
+
+\newcommand{\VOID}{{\tt void}}
+\newcommand{\CHAR}{{\tt char}}
+\newcommand{\INT}{{\tt int}}
+\newcommand{\FLOAT}{{\tt float}}
+\newcommand{\DOUBLE}{{\tt double}}
+
+\newcommand{\LONGINT}{{\tt long int}}
+
+%operadores
+
+%\newcommand{\AND}{{\tt \&\&}}
+%\newcommand{\OR}{{\tt ||}}
+
+%\newcommand{\LNOT}{{\tt \~{}}}
+%\newcommand{\LAND}{{\tt \&}}
+%\newcommand{\LOR}{{\tt |}}
+%\newcommand{\LXOR}{{\tt \^{}}}
+
+%palavras reservadas
+
+\newcommand{\IF}{{\tt if}}
+\newcommand{\ELSE}{{\tt else}}
+
+\newcommand{\SWITCH}{{\tt switch}}
+\newcommand{\CASE}{{\tt case}}
+
+\newcommand{\FOR}{{\tt for}}
+\newcommand{\WHILE}{{\tt while}}
+
+\newcommand{\BREAK}{{\tt break}}
+
+%\newcommand{\TRUE}{{\tt true}}
+%\newcommand{\FALSE}{{\tt false}}
+
+\newcommand{\MAIN}{{\tt main}}
+
+\newcommand{\SIZEOF}{{\tt sizeof}}
+
+% funcoes
+
+\newcommand{\SIN}{{\tt sin}}
+\newcommand{\COS}{{\tt cos}}
+\newcommand{\TAN}{{\tt tan}}
+\newcommand{\LOG}{{\tt log}}
+
+\newcommand{\PRINTF}{{\tt printf}}
+\newcommand{\SCANF}{{\tt scanf}}
+
+\newcommand{\SPRINTF}{{\tt sprintf}}
+\newcommand{\SSCANF}{{\tt sscanf}}
+
+\newcommand{\FPRINTF}{{\tt fprintf}}
+\newcommand{\FSCANF}{{\tt fscanf}}
+
+\newcommand{\GETS}{{\tt gets}}
+\newcommand{\FGETS}{{\tt fgets}}
+
+\newcommand{\FOPEN}{{\tt fopen}}
+\newcommand{\FCLOSE}{{\tt fclose}}
+
+\newcommand{\SYSTEM}{{\tt system}}
+
+% outros
+
+\newcommand{\source}[1]{  \vspace{-6pt}  \caption*{ \footnotesize{Fonte: {#1}} }  }
+\newcommand{\ind}{\hspace{1cm}}
+\newcommand{\DFT}{\mathfrak{F}}
+\newcommand{\IFT}{\mathfrak{F}^{-1}}
+
+% lógica
+
+\newcommand{\NOT}{\sim}
+\newcommand{\OR}{\lor}
+\newcommand{\AND}{\land}
+\newcommand{\IMP}{\rightarrow}
+\newcommand{\BIC}{\leftrightarrow}
+\newcommand{\DIMP}{\Rightarrow}
+\newcommand{\DBIC}{\Leftrightarrow}
+\newcommand{\ISINT}{\vdash}
+\newcommand{\ISEM}{\vDash}
+\newcommand{\TRUE}{\textit{true}}
+\newcommand{\FALSE}{\textit{false}}
+
+\newcommand{\COMP}{\operatorname{comp}}
+
+\newcommand{\SKIP}{\vspace{0.5cm}}
+
+%renewcommand
+
+\renewcommand\chaptername{Capítulo}
+\renewcommand\lstlistingname{Listagem}
+%\renewcommand\editionname{Edição}
+
+
+\title{Notas de aula de Lógica para Ciência da Computação}
+\author{Daniel Oliveira Dantas}
+\date{11 de setembro de 2020}
+\begin{document}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Índice
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+\pagestyle{plain}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Capítulo: A linguagem da lógica proposicional
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{01.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Capítulo: A semântica da lógica proposicional
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{02.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Capítulo: A sintaxe da lógica proposicional
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{03.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Capítulo: Métodos semânticos de dedução na lógica proposicional
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\input{04.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Capítulo: Um método sintático de dedução na lógica proposicional
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\input{05.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Capítulo: A linguagem da lógica de predicados
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\input{06.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Capítulo: A semântica da lógica de predicados
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\input{07.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Capítulo: Propriedades semânticas da lógica de predicados
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\input{08.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Capítulo: Métodos semânticos de dedução na lógica de predicados
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\input{09.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Capítulo: Um método sintático de dedução na lógica de predicados
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\input{10.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Capítulo: Exemplos de programas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\chapter{Exemplos de programas}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: pause.cpp
+
+%\section{pause.cpp}
+
+%\lstinputlisting[caption=series.cpp]{src/pause.cpp}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: ascii.cpp
+
+%\section{ascii.cpp}
+
+%\lstinputlisting[caption=ascii.cpp]{src/ascii.cpp}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: dado.cpp
+
+%\section{dado.cpp}
+
+%\lstinputlisting[caption=dado.cpp]{src/dado.cpp}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: primos.cpp
+
+%\section{primos.cpp}
+
+%\lstinputlisting[caption=series.cpp]{src/primos.cpp}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: series.cpp
+
+%\section{series.cpp}
+
+%\lstinputlisting[caption=series.cpp]{src/series.cpp}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: generate.cpp
+
+%\section{generate.cpp}
+
+%\lstinputlisting[caption=generate.cpp]{src/generate.cpp}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Seção: ordena.cpp
+
+%\section{ordena.cpp}
+
+%\lstinputlisting[caption=ordena.cpp]{src/ordena.cpp}
+
+\bibliography{refs}
+\bibliographystyle{plain}
+
+
+\end{document}
+

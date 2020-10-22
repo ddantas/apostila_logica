@@ -1,0 +1,53 @@
+\chapter{Propriedades semânticas da Lógica Proposicional}
+
+
+Capítulo 3 de Souza, \textit{Lógica para Ciência da Computação}~\cite{souza_logica_3}.
+
+\vspace{1cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Propriedades semânticas}
+
+\begin{easylist}
+  & Tautologia: uma fórmula $H$ é tautologia ou válida se e somente se (sse) para toda interpretação $I$ \[ I(H) = T \]
+
+\SKIP
+  
+  & Satisfatibilidade: uma fórmula $H$ é satisfatível ou factível se e somente se (sse) existe pelo menos uma interpretação $I$ tal que \[ I(H) = T \]
+
+\SKIP
+  
+  & Contingência: uma fórmula $H$ é uma contingência se e somente se (sse) existem interpretações $I$ e $J$ tais que \[ I(H) = T \mbox{ e } J(H) = F \]
+
+\SKIP
+  
+  & Contradição: uma fórmula $H$ é contraditória se e somente se (sse) para toda interpretação $I$ \[ I(H) = F \]
+
+\SKIP
+  
+  & Implicação: dadas duas fórmulas $H$ e $G$, $H \ISEM G$ ($H$ implica $G$) sse para toda interpretação $I$ \[ \mbox{ se } I(H) = T \mbox{ então } I(G) = T \]
+
+\SKIP
+  
+  & Equivalência: dadas duas fórmulas $H$ e $G$, $H$ equivale a $G$ sse para toda interpretação $I$ \[ I(H) = I(G) \]
+
+\SKIP
+  
+  & Dada uma fórmula $H$ e uma interpretação $I$, dizemos que $I$ satisfaz $H$ se \[ I(H) = T \]
+
+\SKIP
+  
+  & Um conjunto de fórmulas $\beta = \{H_1, H_2, \dots, H_n\}$ é satisfatível sse existe interpretação $I$ tal que \[ I(H_1) = I(H_2) = \dots = I(H_n) = T \]
+
+\SKIP
+
+  & Um conjunto de fórmulas $\beta = \{H_1, H_2, \dots, H_n\}$ é insatisfatível sse não existe interpretação $I$ tal que \[ I(H_1) = I(H_2) = \dots = I(H_n) = T \]
+
+\end{easylist}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Relações entre propriedades semânticas}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{Componentes de um sistema de processamento de imagens}

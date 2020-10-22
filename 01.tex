@@ -1,0 +1,64 @@
+\chapter{A linguagem da Lógica Proposicional}
+
+
+\setcounter{page}{1}    % set page to 1 again to start arabic count
+\pagenumbering{arabic}
+
+
+Capítulo 1 de Souza, \textit{Lógica para Ciência da Computação}~\cite{souza_logica_3}.
+
+\vspace{1cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{easylist}
+  & Alfabeto: o alfabeto da Lógica Proposicional é composto por
+  && Símbolos de pontuação: $( \; )$
+  && Símbolos de verdade: $\TRUE \; \FALSE$
+  && Símbolos proposicionais: $A \; B \; C \; P \; Q \; R \; A_1 \; A_2 \; A_3 \; a \; b \; c \; \dots$
+  && Conectivos proposicionais: $ \NOT \; \OR \; \AND \; \IMP \; \BIC$
+
+\SKIP
+  
+  & Fórmula: as fórmulas da linguagem da lógica proposicional são construídas a partur dos símbolos do alfabeto conforme as regras a seguir:
+  && Todo símbolo de verdade é uma fórmula.
+  && Todo símbolo proposicional é uma fórmula.
+  && Se $H$ é fórmula, $\NOT H$ é fórmula.
+  && Se $H$ e $G$ são fórmulas, $(H \OR G)$, $(H \AND G)$, $(H \IMP G)$ e $(H \BIC G)$ são fórmulas.
+
+\SKIP
+  
+  & Fórmulas mal formadas: são fórmulas não obtidas da definição anterior.
+
+\SKIP
+  
+  & Ordem de precedência:
+  && $\NOT$
+  && $\IMP \BIC$ \hspace{2cm} $A \IMP B \BIC C$ possui duas interpretações.
+  && $\AND$
+  && $\OR$
+
+\SKIP
+\SKIP
+\SKIP
+  
+  & Comprimento de uma fórmula:
+  && Se $H$ é um símbolo proposicional ou de verdade, $\COMP(H) = 1$.
+  && Se $H$ é fórmula, $\COMP(\NOT H) = \COMP(H) + 1$.
+  && Se $H$ e $G$ são fórmulas:
+  &&& $\COMP(H \OR  G) = \COMP(H) + \COMP(G) + 1$.
+  &&& $\COMP(H \AND G) = \COMP(H) + \COMP(G) + 1$.
+  &&& $\COMP(H \IMP G) = \COMP(H) + \COMP(G) + 1$.
+  &&& $\COMP(H \BIC G) = \COMP(H) + \COMP(G) + 1$.
+
+\SKIP
+  
+  & Subfórmulas:
+  && $H$ é subfórmula de $H$.
+  && Se $H = \NOT G$, $G$ é subfórmula de $H$.
+  && Se $H$ é uma fórmula do tipo $(G \OR E)$, $(G \AND E)$, $(G \IMP E)$ ou $(G \BIC E)$, então $G$ e $E$ são subfórmulas de $H$.
+  && Se $G$ é subfórmula de $H$, então toda subfórmula de $G$ é subfórmula de $H$.
+
+\end{easylist}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{Componentes de um sistema de processamento de imagens}
