@@ -5,6 +5,7 @@ Capítulo 3 de Souza, \textit{Lógica para Ciência da Computação}~\cite{souza
 
 \vspace{1cm}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Propriedades semânticas}
 
@@ -45,9 +46,236 @@ Capítulo 3 de Souza, \textit{Lógica para Ciência da Computação}~\cite{souza
 
 \end{easylist}
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Relações entre propriedades semânticas}
 
+\begin{easylist}
+  & Proposição 3.1: seja $H$ uma fórmula, \[H \text{ é tautologia } \DIMP H \text{ é satisfatível. }\]
+  
+  && Demonstração: $H$ é tautologia $\DBIC$
+  para toda interpretação $I$, $I(H) = T \DIMP$
+  existe interpretação $I$ tal que $I(H) = T \DBIC$
+  $H$ é satisfatível. $\QED$
+
+\SKIP
+
+  & Proposição 3.3: seja $H$ uma fórmula, \[H \text{ é tautologia } \DIMP H \text{ não é contingência. }\]
+  
+  && Demonstração: $H$ é tautologia $\DBIC$
+  para toda interpretação $I$, $I(H) = T \DIMP$
+  não existe interpretação $I$ tal que $I(H) = F \DBIC$
+  $H$ não é contingência. $\QED$
+
+\SKIP
+
+  & Proposição 3.4: seja $H$ uma fórmula, \[H \text{ é contingência } \DIMP H \text{ é satisfatível. }\]
+  
+  && Demonstração: $H$ é contingência $\DBIC$
+  existem interpretações $I$ e $J$ tais que $I(H) = T$ e $J(H) = F$ $\DIMP$
+  existe interpretação $I$ tal que $I(H) = T$ $\DBIC$
+  $H$ é satisfatível. $\QED$
+
+\SKIP
+
+  & Proposição 3.5: seja $H$ uma fórmula, \[H \text{ é tautologia } \DBIC \; \NOT H \text{ é contraditória. }\]
+  
+  && Demonstração: $H$ é tautologia $\DBIC$
+  para toda interpretação $I$, $I(H) = T \DBIC$
+  para toda interpretação $I$, $I(\NOT H) = F \DBIC$
+  $\NOT H$ é contraditória. $\QED$
+
+\SKIP
+
+  & Proposição 3.7: sejam $H$ e $G$ duas fórmulas, \[H \text{ equivale a } G \DBIC \; (H \BIC G) \text{ é tautologia. }\]
+  
+  && Demonstração: $H$ equivale a $G \DBIC$
+  para toda interpretação $I$, $I(H) = I(G) \DBIC$
+  para toda interpretação $I$, $I(H \BIC G) = T \DBIC$
+  $(H \BIC G)$ é tautologia. $\QED$
+
+\SKIP
+
+  & Proposição 3.8: sejam $H$ e $G$ duas fórmulas, \[H \text{ implica } G \DBIC \; (H \IMP G) \text{ é tautologia. }\]
+  
+  && Demonstração: $H$ implica $G \DBIC$
+  para toda interpretação $I$, se $I(H) = T$ então $I(G) = T \DBIC$
+  para toda interpretação $I$, $I(H \IMP G) = T \DBIC$
+  $(H \IMP G)$ é tautologia. $\QED$
+
+% Teorema da dedução semântica.
+
+
+\end{easylist}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\section{Componentes de um sistema de processamento de imagens}
+\section{Relações semânticas entre os conectivos da lógica proposicional}
+
+\begin{easylist}
+  & Conjunto de conectivos completo: o conjunto de conectivos $\psi$ é dito completo se é possível expressar os conectivos $\{\NOT, \OR, \AND, \IMP, \BIC\}$ usando apenas os conectivos de $\psi$.
+
+  && O conectivo $\IMP$ pode ser expresso com $\{\NOT, \OR\}$: \[(P \IMP Q) \equiv \; (\NOT P \OR Q)\]
+  && O conectivo $\AND$ pode ser expresso com $\{\NOT, \OR\}$: \[(P \AND Q) \equiv \; \NOT(\NOT P \OR \NOT Q)\]
+  && O conectivo $\BIC$ pode ser expresso com $\{\NOT, \OR\}$: \[(P \BIC Q) \equiv \; \NOT(\NOT(\NOT P \OR Q) \OR (\NOT(\NOT(Q \OR P))\]
+
+\SKIP
+
+  & O conjunto $\{\NOT, \OR\}$ é completo, pois é possível expressar os conectivos $\{\NOT, \OR, \AND, \IMP, \BIC\}$ usando apenas $\{\NOT, \OR\}$.
+
+  & Proposição 3.15 (regra da substituição): sejam $G, G', H$ e $H'$ fórmulas da lógica proposicional tais que:
+
+  && $G$ e $H$ são subfórmulas de $G'$ e $H'$ respectivamente.
+  && $G'$ é obtida de $H'$ da substituição de $H$ por $G$ em $G'$.
+  && $G$ e $H$ são subfórmulas de $G'$ e $H'$ respectivamente.
+
+\[ G \equiv H \DIMP G' \equiv H' \]
+
+\SKIP
+
+  & Definição: o conectivo NAND $(\NAND)$ é definido por $(P \NAND Q) \equiv \; \NOT(P \AND Q)$.
+
+  && O conectivo $\NOT$ pode ser expresso com $\{\NAND\}$: \[(  \NOT P) \equiv \; (P \NAND P)\]
+  && O conectivo $\OR$  pode ser expresso com $\{\NAND\}$: \[(P \OR  Q) \equiv \; ((P \NAND P) \NAND (Q \NAND Q))\]
+
+\end{easylist}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Formas normais na lógica proposicional}
+
+\begin{easylist}
+
+  & Literais: um literal na lógica proposicional é um símbolo proposicional ou sua negação.
+
+  & Forma normal: dada uma fórmula $H$ da lógica proposicional, existe uma fórmula $G$, equivalente a $H$, que está na forma normal. Forma normal é uma estrutura de fórmula pré-definida.
+
+  && Forma normal disjuntiva (FND): é uma disjunção ($\OR$)  de conjunções ($\AND$).
+  && Forma normal conjuntiva (FNC): é uma conjunção ($\AND$) de disjunções ($\OR$).
+
+  & Obtenção de formas normais:
+
+  && FND:
+  &&& Obtenha a tabela verdade da fórmula.
+  &&& Selecione as linhas cuja interpretação é $V$.
+  &&& Para cada linha selecionada, faça a conjunção ($\AND$) de todos os símbolos proposicionais cuja interpretação é $V$ com a negação dos símbolos proposicionais cuja interpretação é $F$.
+  &&& Faça a disjunção ($\OR$) das fórmulas obtidas no passo anterior.
+
+  && FNC:
+  &&& Obtenha a tabela verdade da fórmula.
+  &&& Selecione as linhas cuja interpretação é $F$.
+  &&& Para cada linha selecionada, faça a disjunção ($\OR$) de todos os símbolos proposicionais cuja interpretação é $F$ com a negação dos símbolos proposicionais cuja interpretação é $V$.
+  &&& Faça a conjunção ($\AND$) das fórmulas obtidas no passo anterior.
+
+  \clearpage
+  
+  & Exemplo: encontre a FND e a FNC da fórmula $((P \IMP Q) \AND R)$.
+\end{easylist}
+
+\begin{center}
+  \begin{tabular}{ c|c|c|c|c|c|c }
+    $P$ & $Q$ & $R$ & $P \IMP Q$ & $(P \IMP Q) \AND R$ & FND & FNC \\
+    \hline
+    $T$ & $T$ & $T$ & $T$        & $T$                 & $P \AND Q \AND R$ & $ $ \\
+    $T$ & $T$ & $F$ & $T$        & $F$                 & $ $ & $\NOT P \OR \NOT Q \OR      R$ \\
+    $T$ & $F$ & $T$ & $F$        & $F$                 & $ $ & $\NOT P \OR      Q \OR \NOT R$ \\
+    $T$ & $F$ & $F$ & $F$        & $F$                 & $ $ & $\NOT P \OR      Q \OR      R$ \\
+    $F$ & $T$ & $T$ & $T$        & $T$                 & $\NOT P \AND Q \AND R$ & $ $ \\
+    $F$ & $T$ & $F$ & $T$        & $F$                 & $ $ & $     P \OR \NOT Q \OR      R$ \\
+    $F$ & $F$ & $T$ & $T$        & $T$                 & $\NOT P \AND \NOT Q \AND R$ & $ $ \\
+    $F$ & $F$ & $F$ & $T$        & $F$                 & $ $ & $     P \OR      Q \OR      R$ \\
+  \end{tabular}
+\end{center}
+
+\begin{easylist}
+
+  && FND: $(P \AND Q \AND R) \OR (\NOT P \AND Q \AND R) \OR (\NOT P \AND \NOT Q \AND R)$
+  && FNC:
+    $(\NOT P \OR \NOT Q \OR      R) \AND
+     (\NOT P \OR      Q \OR \NOT R) \AND
+     (\NOT P \OR      Q \OR      R) \AND \\
+     (     P \OR \NOT Q \OR      R) \AND
+     (     P \OR      Q \OR      R)$
+
+  
+\end{easylist}
+
+
+
+
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercícios}
+
+%$ \NOT \; \OR \; \AND \; \IMP \; \BIC$
+
+\begin{enumerate}
+  \item Determine o comprimento e o conjunto de subfórmulas das fórmulas a seguir.
+    \begin{enumerate}
+      \item $P \OR P$
+      \item $((\NOT \NOT P \OR Q) \BIC (P \IMP Q)) \AND \TRUE$
+      \item $P \IMP ((Q \IMP R) \IMP ((P \IMP R) \IMP (P \IMP R)))$
+      \item $((P \IMP \NOT P) \BIC \NOT P) \OR Q$
+      \item $\NOT (P \IMP \NOT P)$
+    \end{enumerate}
+  \item Dentre as concatenações de símbolos a seguir, quais são fórmulas bem formadas e quais são fórmulas mal formadas?
+    \begin{enumerate}
+      \item $(P \IMP \AND \TRUE)$
+      \item $(P \AND Q) \IMP ((Q \BIC P) \OR \NOT \NOT R)$
+      \item $\NOT \NOT P$
+      \item $\OR Q$
+      \item $(P \OR Q) \IMP ((Q \BIC R))$
+      \item $PQR$
+      \item $A \NOT$
+    \end{enumerate}
+
+  \item Demonstre as proposições abaixo usando as regras de interpretação de fórmulas.
+    \begin{enumerate}
+      \item $I(P \AND Q) = T \Leftrightarrow I(\NOT(\NOT P \OR \NOT Q)) = T$
+      \item $I(P \AND Q) = F \Leftrightarrow I(\NOT(\NOT P \OR \NOT Q)) = F$
+      \item $I(P \AND Q) = T \Leftrightarrow I(\NOT P \OR \NOT Q) = F$
+      \item $I(P \IMP Q) = F \Leftrightarrow I(\NOT P \OR Q) = F$
+      \item $I(P \IMP Q) = T \Leftrightarrow I(\NOT P \OR Q) = T$
+      \item $I(P \IMP Q) = F \Leftrightarrow I(P \AND \NOT Q) = T$
+    \end{enumerate}
+  \item Seja $H = (P \IMP Q)$ e $I$ uma interpretação.
+    \begin{enumerate}
+      \item Se $I(H) = T$, o que se pode concluir a respeito de $I(P)$ e $I(Q)$?
+      \item Se $I(H) = T$ e $I(P) = T$, o que se pode concluir a respeito de $I(Q)$?
+      \item Se $I(Q) = T$, o que se pode concluir a respeito de $I(H)$?
+      \item Se $I(H) = T$ e $I(P) = F$, o que se pode concluir a respeito de $I(Q)$?
+      \item Se $I(Q) = F$ e $I(P) = T$, o que se pode concluir a respeito de $I(H)$?
+    \end{enumerate}
+  \item Seja $I$ uma interpretação tal que $I(P \BIC Q) = T$. O que se pode concluir a respeito de:
+    \begin{enumerate}
+      \item $I(\NOT P \AND Q)$
+      \item $I(P \OR \NOT Q)$
+      \item $I(Q \IMP P)$
+      \item $I((P \AND R) \BIC (Q \AND R))$
+      \item $I((P \OR  R) \BIC (Q \OR  R))$
+    \end{enumerate}
+  \item Repita o exercício anterior considerando $I(P \BIC Q) = F$.
+
+  \item Sejam $H$ e $G$ as fórmulas indicadas a seguir. Identifique, justificando sua resposta, os casos em que $H$ implica $G$.
+    \begin{enumerate}
+      \item $H = (P \AND Q), G = P$
+      \item $H = (P \OR  Q), G = P$
+      \item $H = (P \OR \NOT Q), G = \FALSE$
+      \item $H = \FALSE, G = P$
+      \item $H = P, G = \TRUE$
+    \end{enumerate}
+
+  \item Demonstre as proposições abaixo ou dê um contra-exemplo.
+    \begin{enumerate}
+      \item Proposição 3.6: $H$ não é satisfatível $\Leftrightarrow$ $H$ é contraditória.
+      \item $H$ é satisfatível $\Leftrightarrow$ $H$ não é contraditória.
+      \item $\NOT H$ é tautologia $\Leftrightarrow$ $H$ é contraditória.
+      \item $H$ não é tautologia $\Leftrightarrow$ $H$ é contraditória.
+    \end{enumerate}
+  
+
+
+\end{enumerate}
+
+  
+  
