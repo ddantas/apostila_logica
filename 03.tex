@@ -1,4 +1,4 @@
-\chapter{Propriedades semânticas da Lógica Proposicional}
+\chapter{Propriedades semânticas da lógica proposicional}
 
 
 Capítulo 3 de Souza, \textit{Lógica para Ciência da Computação}~\cite{souza_logica_3}.
@@ -117,7 +117,7 @@ Capítulo 3 de Souza, \textit{Lógica para Ciência da Computação}~\cite{souza
 
   && O conectivo $\IMP$ pode ser expresso com $\{\NOT, \OR\}$: \[(P \IMP Q) \equiv \; (\NOT P \OR Q)\]
   && O conectivo $\AND$ pode ser expresso com $\{\NOT, \OR\}$: \[(P \AND Q) \equiv \; \NOT(\NOT P \OR \NOT Q)\]
-  && O conectivo $\BIC$ pode ser expresso com $\{\NOT, \OR\}$: \[(P \BIC Q) \equiv \; \NOT(\NOT(\NOT P \OR Q) \OR (\NOT(\NOT(Q \OR P))\]
+  && O conectivo $\BIC$ pode ser expresso com $\{\NOT, \OR\}$: \[(P \BIC Q) \equiv \; \NOT(\NOT(\NOT P \OR Q) \OR \NOT(\NOT Q \OR P))\]
 
 \SKIP
 
@@ -126,8 +126,7 @@ Capítulo 3 de Souza, \textit{Lógica para Ciência da Computação}~\cite{souza
   & Proposição 3.15 (regra da substituição): sejam $G, G', H$ e $H'$ fórmulas da lógica proposicional tais que:
 
   && $G$ e $H$ são subfórmulas de $G'$ e $H'$ respectivamente.
-  && $G'$ é obtida de $H'$ da substituição de $H$ por $G$ em $G'$.
-  && $G$ e $H$ são subfórmulas de $G'$ e $H'$ respectivamente.
+  && $G'$ é obtida de $H'$ da substituição de $H$ por $G$ em $H'$.
 
 \[ G \equiv H \DIMP G' \equiv H' \]
 
@@ -157,14 +156,14 @@ Capítulo 3 de Souza, \textit{Lógica para Ciência da Computação}~\cite{souza
 
   && FND:
   &&& Obtenha a tabela verdade da fórmula.
-  &&& Selecione as linhas cuja interpretação é $V$.
-  &&& Para cada linha selecionada, faça a conjunção ($\AND$) de todos os símbolos proposicionais cuja interpretação é $V$ com a negação dos símbolos proposicionais cuja interpretação é $F$.
+  &&& Selecione as linhas cuja interpretação é $t$.
+  &&& Para cada linha selecionada, faça a conjunção ($\AND$) de todos os símbolos proposicionais cuja interpretação é $T$ com a negação dos símbolos proposicionais cuja interpretação é $F$.
   &&& Faça a disjunção ($\OR$) das fórmulas obtidas no passo anterior.
 
   && FNC:
   &&& Obtenha a tabela verdade da fórmula.
   &&& Selecione as linhas cuja interpretação é $F$.
-  &&& Para cada linha selecionada, faça a disjunção ($\OR$) de todos os símbolos proposicionais cuja interpretação é $F$ com a negação dos símbolos proposicionais cuja interpretação é $V$.
+  &&& Para cada linha selecionada, faça a disjunção ($\OR$) de todos os símbolos proposicionais cuja interpretação é $F$ com a negação dos símbolos proposicionais cuja interpretação é $T$.
   &&& Faça a conjunção ($\AND$) das fórmulas obtidas no passo anterior.
 
   \clearpage
