@@ -1,0 +1,175 @@
+\chapter{A inguagem da lógica de predicados}
+
+
+Capítulo 6 de Souza, \textit{Lógica para Ciência da Computação}~\cite{souza_logica_3}.
+
+\vspace{1cm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{O alfabeto da lógica de predicados}
+
+\begin{easylist}
+  & Alfabeto: o alfabeto da lógica de predicados é composto por
+  && Símbolos de pontuação: $( \; )$
+  && Símbolos de verdade: $\TRUE \; \FALSE$
+  && Símbolos para variáveis: $x \; y \; z \; w \; x_1 \; y_1 \; z_1 \; x_2 \dots$
+  && Símbolos para funções: $f \; g \; h \; f_1 \; g_1 \; h_1 \; f_2 \dots$
+  && Símbolos para predicados: $p \; q \; r \; s \; p_1 \; q_1 \; r_1 \; s_1 \; p_2 \dots$
+  && Conectivos: $ \NOT \; \OR \; \AND \; \IMP \; \BIC \; \FA \; \EX$
+
+  & Associado a cada função ou predicado está um número inteiro $k\geq0$ que indica a sua ``aridade'', ou seja, seu número de argumentos.
+
+  & Os símbolos para funções zero-árias, isto é, funções constantes, são: $a \; b \; c \; a_1 \; b_1 \; c_1 \; a_2 \dots$
+
+  & Os símbolos para predicados zero-ários, isto é, símbolos proposicionais, são: $P \; Q \; R \; S \; P_1 \; Q_1 \; R_1 \; S_1 \; P_2 \dots$
+
+\end{easylist}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Fórmulas da lógica de predicados}
+
+\begin{easylist}
+  & Termo: um termo pode ser
+  && uma variável
+  && $f(t_1, \dots, t_n)$ onde $f$ é uma função $n$-ária e $t_1, \dots, t_n$ são termos.
+
+\SKIP
+  A INTERPRETAÇÃO DE UM TERMO É UM OBJETO MATEMÁTICO
+\SKIP
+
+  & Átomo: um átomo pode ser
+  && um símbolo de verdade
+  && $p(t_1, \dots, t_n)$ onde $p$ é um predicado $n$-ário e $t_1, \dots, t_n$ são termos.
+
+\SKIP
+  A INTERPRETAÇÃO DE UM ÁTOMO É UM VALOR DE VERDADE $\in \{T, F\}$
+\SKIP
+
+  
+  & Fórmula: as fórmulas da linguagem da lógica de predicados são construídas a partir dos símbolos do alfabeto conforme as regras a seguir:
+  && Todo átomo é uma fórmula.
+  && Se $H$ é fórmula, $\NOT H$ é fórmula.
+  && Se $H$ e $G$ são fórmulas, então $(H \OR G)$, $(H \AND G)$, $(H \IMP G)$ e $(H \BIC G)$ são fórmulas.
+  && Se $H$ é fórmula e $x$ é variável, então, $((\FA x) H)$ e $((\EX x) H)$ são fórmulas.
+
+  & Expressão: uma expressão pode ser
+  && um termo
+  && uma fórmula
+
+\end{easylist}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Correspondência entre quantificadores}
+
+\begin{easylist}
+  & $ ((\FA x) H) \;\; \equiv \;\; \NOT((\EX x)(\NOT H)) $
+  & $ ((\EX x) H) \;\; \equiv \;\; \NOT((\FA x)(\NOT H)) $
+\end{easylist}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Símbolos de pontuação}
+
+\begin{easylist}
+  & Ordem de precedência:
+  && $\NOT$      \hspace{5cm} Maior
+  && $\FA \; \EX$
+  && $\IMP \; \BIC$ \hspace{1cm} $A \IMP B \BIC C$ possui duas interpretações.
+  && $\AND$
+  && $\OR$       \hspace{5cm} Menor
+\end{easylist}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Características sintáticas das fórmulas}
+
+\begin{easylist}
+
+  & Subtermo, subfórmula e subexpressão:
+  && Se $E = x$ então x é subtermo de $E$.
+  && Se $E = f(t_1, \dots, t_n)$ então $t_1, \dots, t_n, f(t_1, \dots, t_n)$ são subtermos de $E$.
+  && Se $H$ é fórmula, $H$ é subfórmula de $H$.
+  && Se $E = \NOT H$, então $H$ e $\NOT H$ são subfórmulas de $E$.
+  && Se $E$ é uma fórmula do tipo $(G \OR H)$, $(G \AND H)$, $(G \IMP H)$ ou $(G \BIC H)$, então $G$ e $H$ são subfórmulas de $E$.
+  && Se $E$ é uma fórmula do tipo $(\FA x)H$ ou $(\EX x)H$, então $H$ é subfórmula de $E$.
+  && Se $G$ é subfórmula de $H$, então toda subfórmula de $G$ é subfórmula de $H$.
+  && Todo subtermo ou subfórmula é também subexpressão.
+
+  & Comprimento de uma fórmula:
+  && Se $H$ é um átomo, $\COMP(H) = 1$.
+  && Se $H$ é fórmula, $\COMP(\NOT H) = \COMP(H) + 1$.
+  && Se $H$ e $G$ são fórmulas:
+  &&& $\COMP(H \OR  G) = \COMP(H) + \COMP(G) + 1$.
+  &&& $\COMP(H \AND G) = \COMP(H) + \COMP(G) + 1$.
+  &&& $\COMP(H \IMP G) = \COMP(H) + \COMP(G) + 1$.
+  &&& $\COMP(H \BIC G) = \COMP(H) + \COMP(G) + 1$.
+  && Se $H = ((\FA(x)G)$ ou $H = ((\EX(x)G)$, então $\COMP(H) = \COMP(G) + 1$.
+
+\SKIP
+  
+\end{easylist}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Formas normais}
+
+\begin{easylist}
+  & Literal: um literal pode ser
+  && um átomo
+  && a negação de um átomo
+
+  & Forma normal: uma fórmula está na
+  && forma normal conjuntiva (FNC) se for uma conjunção $(\AND)$ de disjunções $(\OR)$ de literais
+  && forma normal disjuntiva (FND) se for uma disjunção $(\OR)$ de conjunções $(\AND)$ de literais
+
+\end{easylist}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Classificações de variáveis}
+
+\begin{easylist}
+
+
+  & Escopo de um quantificador: seja $G$ uma fórmula da lógica de predicados:
+  && Se $(\FA x)H$ é uma subfórmula de $G$, então o escopo de $(\FA x)$ em $G$ é a subfórmula $H$.
+  && Se $(\EX x)H$ é uma subfórmula de $G$, então o escopo de $(\EX x)$ em $G$ é a subfórmula $H$.
+
+  \clearpage
+  \EXERCICIOS
+  \begin{enumerate}
+  \item Considere a fórmula abaixo.
+    \[ G = (\FA x)(\EX y)((\FA z)p(x,y,z,w) \IMP (\FA y)q(z,y,x,z_1)) \]
+    Qual é o escopo de
+    \begin{enumerate}
+      \item $(\FA x)$
+      \item $(\EX y)$
+      \item $(\FA z)$
+      \item $(\FA y)$
+    \end{enumerate}
+  \end{enumerate}
+
+  & Ocorrência livre e ligada: sejam $x$ uma variável e $G$ uma fórmula.
+  && Uma ocorrência de $x$ em $G$ é ligada se $x$ está no escopo de um quantificador $(\FA x)$ ou $(\EX x)$.
+  && Uma ocorrência de $x$ em $G$ é livre se não for ligada.
+
+  & Variável livre e ligada: sejam  $x$ uma variável e $G$ uma fórmula.
+  && A variável $x$ é ligada em $G$ se existe pelo menos uma ocorrência ligada de $x$ em $G$.
+  && A variável $x$ é livre em $G$ se existe pelo menos uma ocorrência livre de $x$ em $G$.
+
+  & Símbolo livre: seja $G$ uma fórmula, os seus símbolos livres são as variáveis com ocorrência livre em $G$, símbolos de função e símbolos de predicado.
+
+  & Fórmula fechada: uma fórmula é fechada quando não possui variáveis livres.
+
+  & Fecho de uma fórmula: seja $H$ uma fórmula da lógica de predicados, e $\{x_1, \dots, x_n\}$ o conjunto das variáveis livres de $H$.
+  && O fecho universal de $H$, indicado por $(\FA *)H$, é dado pela fórmula\\ $(\FA x_1)(\FA x_2)\dots(\FA x_n)H$.
+  && O fecho existencial de $H$, indicado por $(\EX *)H$, é dado pela fórmula $(\EX x_1)(\EX x_2)\dots(\EX x_n)H$.
+  
+\end{easylist}
+
+
+
+

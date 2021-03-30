@@ -47,6 +47,11 @@ Style2*=$\bullet$ ,Style3*=$\circ$ ,Style4*=\tiny$\blacksquare$ )
 % ddantas, 31/03/2020
 \usepackage{subcaption}
 
+% Adicionado para permitir a inserção de tableaux semânticos
+% ddantas, 06/12/2020
+%\usepackage[tableaux]{prooftrees}
+\usepackage{prooftrees}
+
 %formatacao
 
 \newcommand{\TAB}{{\hspace*{1cm}}}
@@ -126,8 +131,10 @@ Style2*=$\bullet$ ,Style3*=$\circ$ ,Style4*=\tiny$\blacksquare$ )
 \newcommand{\IFT}{\mathfrak{F}^{-1}}
 
 % lógica
+\newcommand{\swungdash}{\raisebox{-2.25ex}{\scalebox{2}{\~{}}}}
 
-\newcommand{\NOT}{\sim}
+%\newcommand{\NOT}{\sim}
+\newcommand{\NOT}{\swungdash}
 \newcommand{\OR}{\lor}
 \newcommand{\AND}{\land}
 \newcommand{\NAND}{\barwedge}
@@ -140,11 +147,18 @@ Style2*=$\bullet$ ,Style3*=$\circ$ ,Style4*=\tiny$\blacksquare$ )
 \newcommand{\TRUE}{\textit{true}}
 \newcommand{\FALSE}{\textit{false}}
 
+\newcommand{\FA}{\forall}
+\newcommand{\EX}{\exists}
+
+
+
 \newcommand{\QED}{\blacksquare}
+\newcommand{\SKIP}{\vspace{0.5cm}}
+\newcommand{\EXERCICIOS}{\SKIP {\bf Exercícios}}
+
 
 \newcommand{\COMP}{\operatorname{comp}}
 
-\newcommand{\SKIP}{\vspace{0.5cm}}
 
 %renewcommand
 
@@ -200,14 +214,14 @@ Style2*=$\bullet$ ,Style3*=$\circ$ ,Style4*=\tiny$\blacksquare$ )
 %Capítulo: Um método sintático de dedução na lógica proposicional
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\input{05.tex}
+\input{05.tex}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Capítulo: A linguagem da lógica de predicados
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\input{06.tex}
+\input{06.tex}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
