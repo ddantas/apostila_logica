@@ -8,6 +8,7 @@ Capítulo 3 de Souza, \textit{Lógica para Ciência da Computação}~\cite{souza
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Propriedades semânticas}
+\label{lprop:propriedadesSemanticas}
 
 \begin{easylist}
   & Tautologia: uma fórmula $H$ é tautologia ou válida se e somente se (sse) para toda interpretação $I$ \[ I(H) = T \]
@@ -63,8 +64,9 @@ Capítulo 3 de Souza, \textit{Lógica para Ciência da Computação}~\cite{souza
   & Proposição 3.3: seja $H$ uma fórmula, \[H \text{ é tautologia } \DIMP H \text{ não é contingência. }\]
   
   && Demonstração: $H$ é tautologia $\DBIC$
-  para toda interpretação $I$, $I(H) = T \DIMP$
-  não existe interpretação $I$ tal que $I(H) = F \DBIC$
+  para toda interpretação $I$, $I(H) = T \DBIC$
+  não existe interpretação $I$ tal que $I(H) = F \DIMP$
+  não existem interpretações $I$ e $J$ tais que $I(H) = F$ e $J(H) = T \DBIC$
   $H$ não é contingência. $\QED$
 
 \SKIP
@@ -156,7 +158,7 @@ Capítulo 3 de Souza, \textit{Lógica para Ciência da Computação}~\cite{souza
 
   && FND:
   &&& Obtenha a tabela verdade da fórmula.
-  &&& Selecione as linhas cuja interpretação é $t$.
+  &&& Selecione as linhas cuja interpretação é $T$.
   &&& Para cada linha selecionada, faça a conjunção ($\AND$) de todos os símbolos proposicionais cuja interpretação é $T$ com a negação dos símbolos proposicionais cuja interpretação é $F$.
   &&& Faça a disjunção ($\OR$) das fórmulas obtidas no passo anterior.
 
@@ -237,6 +239,14 @@ Capítulo 3 de Souza, \textit{Lógica para Ciência da Computação}~\cite{souza
       \item $I(P \IMP Q) = T \Leftrightarrow I(\NOT P \OR Q) = T$
       \item $I(P \IMP Q) = F \Leftrightarrow I(P \AND \NOT Q) = T$
     \end{enumerate}
+  \noindent
+  Responda as questões 4, 5 e 6 conforme os exemplos abaixo.
+    \begin{enumerate}
+      \item Se $I(P) = F$, o que se pode concluir a respeito de $I(H)$?\\
+        R: Pode-se concluir que $I(H) = T$.
+      \item Se $I(P) = T$, o que se pode concluir a respeito de $I(H)$?\\
+        R: Nada se pode concluir.
+    \end{enumerate}
   \item Seja $H = (P \IMP Q)$ e $I$ uma interpretação.
     \begin{enumerate}
       \item Se $I(H) = T$, o que se pode concluir a respeito de $I(P)$ e $I(Q)$?
@@ -245,7 +255,7 @@ Capítulo 3 de Souza, \textit{Lógica para Ciência da Computação}~\cite{souza
       \item Se $I(H) = T$ e $I(P) = F$, o que se pode concluir a respeito de $I(Q)$?
       \item Se $I(Q) = F$ e $I(P) = T$, o que se pode concluir a respeito de $I(H)$?
     \end{enumerate}
-  \item Seja $I$ uma interpretação tal que $I(P \BIC Q) = T$. O que se pode concluir a respeito de:
+  \item Seja $I$ uma interpretação tal que $I(P \BIC Q) = T$. O que se pode concluir a respeito de
     \begin{enumerate}
       \item $I(\NOT P \AND Q)$
       \item $I(P \OR \NOT Q)$
@@ -272,9 +282,102 @@ Capítulo 3 de Souza, \textit{Lógica para Ciência da Computação}~\cite{souza
       \item $H$ não é tautologia $\Leftrightarrow$ $H$ é contraditória.
     \end{enumerate}
   
+  \item Encontre a FND e a FNC das das fórmulas a seguir.
+    \begin{enumerate}
+      \item $(P \BIC Q) \AND (P \OR R)$
+      \item $(P \IMP Q) \AND (P \IMP R)$
+    \end{enumerate}
 
 
 \end{enumerate}
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercícios v.2}
+
+%$ \NOT \; \OR \; \AND \; \IMP \; \BIC$
+
+\begin{enumerate}
+  \item Determine o comprimento e o conjunto de subfórmulas das fórmulas a seguir.
+    \begin{enumerate}
+      \item $P \OR Q$
+      \item $\NOT ( P \IMP Q ) \BIC ( R \AND S)$
+      \item $ (\NOT P \OR \NOT Q) \BIC \NOT ( P \AND Q )$
+      \item $ ( A \AND ( B \AND ( C \AND D ) ) ) \OR ( \NOT A \AND ( \NOT B \AND ( C \AND D ) ) )$
+    \end{enumerate}
+
+  \item Dentre as concatenações de símbolos a seguir, quais são fórmulas bem formadas e quais são fórmulas mal formadas?
+    \begin{enumerate}
+      \item $ P \IMP ( ( Q \IMP R ) \IMP ( ( P \IMP R ) \IMP ( P \IMP R ) ) )$
+      \item $ (P \OR \IMP Q) \AND R$
+      \item $ ( ( P \IMP \NOT P ) \BIC \NOT P ) \OR Q$
+      \item $ P \NOT \IMP Q$
+    \end{enumerate}
+
+  \item Demonstre as proposições abaixo usando as regras de interpretação de fórmulas.
+    \begin{enumerate}
+      \item $I(P \IMP Q) = T \Leftrightarrow I(\NOT ( P \AND Q)) = T$
+      \item $I(\NOT P \IMP \NOT Q) = T \Leftrightarrow I(\NOT (\NOT P \AND Q) = T$
+    \end{enumerate}
+  \noindent
+  Responda as questões 4 conforme os exemplos abaixo.
+    \begin{enumerate}
+      \item Se $I(P) = F$, o que se pode concluir a respeito de $I(H)$?\\
+        R: Pode-se concluir que $I(H) = T$.
+      \item Se $I(P) = T$, o que se pode concluir a respeito de $I(H)$?\\
+        R: Nada se pode concluir.
+    \end{enumerate}
+  \item O que se pode concluir a respeito de
+    \begin{enumerate}
+      \item $I(P \AND Q)$ se $I(P) = T$
+      \item $I(P \AND Q)$ se $I(P) = F$
+      \item $I(P \OR Q)$  se $I(Q) = T$
+      \item $I(P \OR Q)$  se $I(Q) = F$
+      \item $I(P \IMP Q)$ se $I(P) = T$
+      \item $I(P \IMP Q)$ se $I(Q) = T$
+      \item $I(P \IMP Q)$ se $I(P) = F$
+      \item $I(P \IMP Q)$ se $I(Q) = F$
+      \item $I(P \BIC Q)$ se $I(P) = T$
+      \item $I(P \BIC Q)$ se $I(P) = F$
+    \end{enumerate}
+
+  \item Mostre se os conjuntos de fórmulas a seguir são satisfatíveis ou insatisfatíveis.
+    \begin{enumerate}
+      \item $\{ (P \AND Q), (P \OR Q) \}$
+      \item $\{ (P \AND Q), (P \IMP Q) \}$
+      \item $\{ (P \OR Q),  (P \BIC Q) \}$
+      \item $\{ (P \AND Q), (P \IMP \NOT Q) \}$
+    \end{enumerate}
+
+  \item Demonstre as proposições abaixo ou dê um contra-exemplo.
+    \begin{enumerate}
+      \item $H$ é satisfatível $\Leftrightarrow \NOT H$ é satisfatível
+      \item $H$ é contraditória $\Leftrightarrow \NOT H$ é tautologia
+      \item $H$ é tautologia $\Leftrightarrow \NOT H$ é contraditória
+      \item $H$ é tautologia $\Rightarrow H$ é satisfatível
+      \item $H$ implica $G \Leftrightarrow ( H \IMP G )$ é tautologia
+      \item $H$ equivale a $G \Leftrightarrow ( H \BIC G )$ é tautologia
+    \end{enumerate}
+
+  \item Demonstre se as fórmulas a seguir são tautologias usando o método da tabela verdade e o da árvore semântica.
+    \begin{enumerate}
+      \item $H = ( P \OR Q ) \BIC (\NOT P \IMP Q )$
+      \item $H = \NOT ( P \BIC Q ) \BIC (\NOT P \BIC Q )$
+      \item $H = (\NOT P \BIC \NOT Q ) \BIC \NOT ( P \BIC \NOT Q )$
+      \item $H = ( P \OR \NOT Q ) \BIC ( \NOT P  \IMP \NOT Q )$
+    \end{enumerate}
+
+  \item Demonstre por absurdo se as fórmulas a seguir são ou não tautologias.
+    \begin{enumerate}
+      \item $( P \AND Q ) \BIC (\NOT P \OR Q )$
+      \item $( P \OR Q ) \BIC (\NOT P \OR Q )$
+      \item $( P \AND Q ) \BIC ( P \AND \NOT P )$
+    \end{enumerate}
+
+\end{enumerate}
+
   
+  
+
   

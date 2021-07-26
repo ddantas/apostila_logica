@@ -1,4 +1,4 @@
-\chapter{A inguagem da lógica de predicados}
+\chapter{A linguagem da lógica de predicados}
 
 
 Capítulo 6 de Souza, \textit{Lógica para Ciência da Computação}~\cite{souza_logica_3}.
@@ -106,7 +106,7 @@ Capítulo 6 de Souza, \textit{Lógica para Ciência da Computação}~\cite{souza
   &&& $\COMP(H \AND G) = \COMP(H) + \COMP(G) + 1$.
   &&& $\COMP(H \IMP G) = \COMP(H) + \COMP(G) + 1$.
   &&& $\COMP(H \BIC G) = \COMP(H) + \COMP(G) + 1$.
-  && Se $H = ((\FA(x)G)$ ou $H = ((\EX(x)G)$, então $\COMP(H) = \COMP(G) + 1$.
+  && Se $H = ((\FA x)G)$ ou $H = ((\EX x)G)$, então $\COMP(H) = \COMP(G) + 1$.
 
 \SKIP
   
@@ -170,6 +170,89 @@ Capítulo 6 de Souza, \textit{Lógica para Ciência da Computação}~\cite{souza
   
 \end{easylist}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercícios}
 
+%$ \NOT \; \OR \; \AND \; \IMP \; \BIC$
+
+\begin{enumerate}
+  \item Determine o comprimento das fórmulas a seguir.
+    \begin{enumerate}
+      \item $H_1 = p(x, y, f(z))$
+      \item $H_2 =  (P \OR \NOT Q) \IMP \NOT(q(x, y) \OR r(z))$
+      \item $H_3 = (\EX y) r(y) \BIC \NOT (\EX y) P)$
+      \item $H_4 = \NOT(p(x, y, z)) \IMP \NOT( (\FA x) (\FA y) (\FA z) p(x, y, z))$
+    \end{enumerate}
+  \item Determine o conjunto de subespressões das expressões a seguir.
+    \begin{enumerate}
+      \item $H_1 = p(x, y, f(z))$
+      \item $H_2 = g(x, y, f(z))$
+      \item $H_3 = (\EX y) r(y) \BIC \NOT (\EX y) P)$
+      \item $H_4 = \NOT(p(x, y, z)) \IMP \NOT( (\FA x) (\FA y) (\FA z) p(x, y, z))$
+    \end{enumerate}
+  \item Verdadeiro ou falso?
+    \begin{enumerate}
+      \item Toda variável é um termo
+      \item Todo termo é uma variável
+      \item Toda função é um termo
+      \item Todo termo é uma função
+      \item Toda variável é um átomo
+      \item Todo átomo é uma variável
+      \item Todo termo é um átomo
+      \item Todo átomo é um termo
+      \item Todo termo é uma fórmula
+      \item Toda fórmula é um termo
+      \item Todo átomo é um literal
+      \item Todo literal é um átomo
+      \item Todo átomo é uma fórmula
+      \item Toda fórmula é um átomo 
+      \item Todo literal é uma fórmula
+      \item Toda fórmula é um literal 
+      \item Toda variável é uma expressão
+      \item Toda expressão é uma variável
+      \item Todo átomo é uma expressão
+      \item Toda expressão é um átomo
+      \item Todo literal é uma expressão
+      \item Toda expressão é um literal
+      \item Todo termo é uma expressão
+      \item Toda expressão é um termo
+    \end{enumerate}
+  \item Indique se os itens abaixo são ou não variáveis, termos, funções, átomos, literais, fórmulas e expressões.
+    \begin{enumerate}
+      \item $z$
+      \item $a$
+      \item $P \BIC Q$
+      \item $g(x, y, z)$
+      \item $p(x, y, z)$
+      \item $\NOT P$        
+    \end{enumerate}
+  \item Escreva uma fórmula equivalente usando o quantificador existencial $\EX$.
+    \begin{enumerate}
+      \item $H_1 = (\FA x) P$
+      \item $H_2 = \;\NOT (\FA x) P)$
+      \item $H_3 = (\FA x) \NOT P$
+      \item $H_4 = \;\NOT((\FA x) \NOT P)$
+    \end{enumerate}
+  \item Considere a fórmula $(\FA y) ( (\EX x) \NOT q(x) \AND (\EX y) (\FA z) p(y, z) )$. Qual é o escopo de
+    \begin{enumerate}
+      \item $(\FA y)$
+      \item $(\EX x)$
+      \item $(\EX y)$
+      \item $(\FA z)$
+    \end{enumerate}
+  \item Indique o escopo de todos os quantificadores das fórmulas abaixo.
+    \begin{enumerate}
+      \item $(\FA x) ( \; (\FA z) p(x,y,z) \BIC (\FA y) q(x,y,z) \; )$
+      \item $(\FA x) p(x,y,z) \IMP (\FA y) (\EX z) q(x,y,z)$
+    \end{enumerate}
+  \item Indique se as ocorrências de variáveis nas fórmulas abaixo são livres ou ligadas.
+    \begin{enumerate}
+      \item $(\FA x) ( \; (\FA z) p(x,y,z, w) \BIC (\FA y) q(x,y,z, z_1) \; )$
+      \item $(\FA x) ( \;\; p(x,y,z_1) \IMP (\FA y) (\EX z) ( \; q(w,x,y) \AND (\FA w) r(w,x,z) \; ) \;\; )$
+    \end{enumerate}
+  \item Indique se as variáveis nas fórmulas da questão anterior são livres ou ligadas.
+  \item Encontre o fecho universal e o fecho existencial das fórmulas da questão anterior.
+
+\end{enumerate}
 
 

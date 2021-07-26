@@ -10,15 +10,449 @@ Capítulo 5 de Souza, \textit{Lógica para Ciência da Computação}~\cite{souza
 \section{Introdução}
 
 \begin{easylist}
-  & 
+  & Métodos sintáticos são diferentes dos métodos semânticos de dedução. Enquanto nos métodos semânticos é levada em consideração a semântica das fórmulas, ou seja, a sua interpretação, nos métodos sintáticos as deduções são puramente simbólicas, ou seja, dependem da sequência de símbolos da fórmula.
+  & Para denotar implicação semântica, usamos o símbolo $\ISEM$, mas para denotar implicação sintática, usamos o símbolo $\ISINT$.
+  & Um método semântico nos permitiria inferir diretamente que $\NOT \NOT P \ISEM P$, já que sabemos que ambos possuem a mesma tabela verdade ou que uma dupla negação, se eliminada, resulta na mesma interpretação. Em um método sintático, não podemos simplesmente afirmar que $\NOT \NOT P \ISINT P$. Para demonstrar essa implicação, precisamos usar os axiomas e regras de dedução disponíveis.
+
 \end{easylist}
 
+\clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{O sistema formal Pa}
 
 \begin{easylist}
-  &
+  & Alfabeto da lógica proposicional na forma simplificada: é constituído por
+  && Símbolos de pontuação: $( \; )$
+  && Símbolos de verdade: $\FALSE$
+  && Símbolos proposicionais: $A \; B \; C \; P \; Q \; R \; A_1 \; A_2 \; A_3 \; a \; b \; c \; \dots$
+%  &&& Não se usam as letras $V, v, F, f, T$ e $t$ para não confundir com os valores de verdade.
+  && Conectivos proposicionais: $ \NOT \; \OR$
+
+\SKIP
+
+  & Sistema axiomático Pa: é um sistema formal composto por
+  && Alfabeto da lógica proposicional na forma simplificada sem o símbolo de verdade $\FALSE$.
+  && Conjunto das fórmulas da lógica proposicional.
+  && Um subconjunto das fórmulas, denominadas axiomas.
+  && Um conjunto de regras de dedução ou de inferência.
+
+\SKIP
+
+  & Axiomas do sistema Pa
+  && Axioma 1: $\NOT (H \OR H) \OR H$
+  && Axioma 2: $\NOT H \OR (G \OR H)$
+  && Axioma 3: $\NOT (\NOT H \OR G) \OR ( \NOT (E \OR H) \OR (G \OR E) )$
+
+\SKIP
+
+  Usando outros conectivos, os axiomas do sistema Pa podem ser denotados por
+  && Axioma 1: $(H \OR H) \IMP H$
+  && Axioma 2: $H \IMP (G \OR H)$
+  && Axioma 3: $(H \IMP G) \IMP ( (E \OR H) \IMP (G \OR E) )$
+
+\SKIP
+
+  & Notação:
+  && $(H \IMP G)$ denota $(\NOT H \OR G)$
+  && $(H \BIC G)$ denota $(H \IMP G) \AND (G \IMP H)$
+  && $(H \AND G)$ denota $\NOT (\NOT H \OR \NOT G)$
+
+\SKIP
+
+  & Postulado modus ponens: é uma regra de inferência do sistema Pa definida pelo procedimento \[ \mbox{ tendo } H \mbox{ e } (\NOT H \OR G) \mbox{ deduza } G \]
+
+  ou, usando a notação alternativa, \[ \mbox{ tendo } H \mbox{ e } (H \IMP G) \mbox{ deduza } G. \]
+
+    Em outras palavras, se $H$ e $(H \IMP G)$ são fórmulas válidas, então $G$ também é válida. Uma regra de inferência nos permite inferir novas fórmulas a partir de fórmulas já inferidas.
+
 \end{easylist}
+
+  \clearpage
+  \EXERCICIOS
+  \begin{enumerate}
+    \item Prove $H_1 = P \IMP (Q \OR P)$.
+    
+       R: Fazendo $H = P$ e $G = Q$, a fórmula $H_1$ é obtida do axioma 2.
+
+    \item Prove $H_2 = ( P \IMP (Q \OR P) ) \IMP (  (\NOT P \OR P) \IMP ( (Q \OR P) \OR \NOT P)  )$.
+    
+      R: Fazendo $H = P$, $G = (Q \OR P)$ e $E = \; \NOT P$, a fórmula $H_2$ é obtida do axioma 3.
+
+    \item Considere o conjunto de hipóteses $\beta = \{ G_1, G_2 \}$ onde $G_1 = P$ e $G_2 = (P \IMP Q)$. Prove $(R \OR Q)$ a partir de $\beta$ no sistema axiomático Pa.
+    
+    R: 
+
+\begin{tabular}{p{0.6\textwidth}p{0.4\textwidth}}
+  \hline
+    Fórmulas & Justificativa \\
+  \hline
+    $H_1 = P$                & Hipótese $G_1$ \\
+    $H_2 = P \IMP Q$         & Hipótese $G_2$ \\
+    $H_3 = Q$                & Modus ponens em $H_1$ e $H_2$ \\
+    $H_4 = Q \IMP (R \OR Q)$ & Axioma 2, $H = Q$ e $G = R$ \\
+    $H_5 = R \OR Q$          & Modus ponens em $H_3$ e $H_4$ $\QED$\\
+  \hline
+\end{tabular}
+
+\item Considere o conjunto de hipóteses $\beta = \{ G_1, \dots, G_9 \}$ onde
+
+\begin{tabular}{p{0.33\textwidth}p{0.33\textwidth}p{0.33\textwidth}}
+    $G_1 = (P \AND R) \IMP P$  & $G_4 = (P_1 \AND P_2) \IMP Q$  & $G_7 = P_1$          \\
+    $G_2 = Q \IMP P_4$         & $G_5 = (P_3 \AND R  ) \IMP R$  & $G_8 = P_3 \IMP P$   \\
+    $G_3 = P_1 \IMP Q$         & $G_6 = P_4 \IMP P$             & $G_9 = P_2$         \\
+\end{tabular}
+
+    Prove $(S \OR P)$ a partir de $\beta$ no sistema axiomático Pa.
+    
+    R: 
+
+\begin{tabular}{p{0.6\textwidth}p{0.4\textwidth}}
+  \hline
+    Fórmulas & Justificativa \\
+  \hline
+    $H_1 = P_1$              & Hipótese $G_7$ \\
+    $H_2 = P_1 \IMP Q$       & Hipótese $G_3$ \\
+    $H_3 = Q$                & Modus ponens em $H_1$ e $H_2$ \\
+    $H_4 = Q \IMP P_4$       & Hipótese $G_2$ \\
+    $H_5 = P_4$              & Modus ponens em $H_3$ e $H_4$ \\
+    $H_6 = P_4 \IMP P$       & Hipótese $G_6$ \\
+    $H_7 = P$                & Modus ponens em $H_5$ e $H_6$ \\
+    $H_8 = P \IMP (S \OR P)$ & Axioma 2, $H = P$ e $G = S$ \\
+    $H_9 = S \OR P$          & Modus ponens em $H_7$ e $H_8$ $\QED$ \\
+  \hline
+\end{tabular}
+
+  \end{enumerate}
+
+%\clearpage
+\SKIP
+  
+\begin{easylist}
+
+  & Consequência lógica sintática no sistema Pa: dada uma fórmula $H$ e um conjunto de hipóteses $\beta$, dizemos que $H$ é consequência lógica sintática de $\beta$ em Pa se existe uma prova de $H$ em Pa a partir de $\beta$. A notação para isso é $\beta \ISINT H$.
+
+\SKIP
+  
+  & Teorema no sistema Pa: uma fórmula $H$ é um teorema em Pa se existe uma prova de $H$ em Pa que utiliza apenas os axiomas. É permitido usar outros teoremas, já que também foram provados usando apenas axiomas. Teoremas são denotados por $\ISINT H$, já que o conjunto de hipóteses é vazio.
+
+\SKIP
+
+  & Proposição 1: sejam $\beta$ um conjunto de hipóteses, e $A$, $B$ e $C$ três fórmulas da lógica proposicional. Temos que \[ \mbox{ se } \beta \ISINT (A \IMP B) \mbox{ e } \beta \ISINT (C \OR A) \mbox{ então } \beta \ISINT (B \OR C) \]
+
+\end{easylist}
+
+Demonstração:
+
+\begin{tabular}{p{0.6\textwidth}p{0.4\textwidth}}
+  \hline
+    $H_1 = (A \IMP B)$                                         & $ \beta \ISINT (A \IMP B)$ \\
+    $H_2 = (A \IMP B) \IMP ( (C \OR A) \IMP (B \OR C) )$       & Axioma 3, $H = A$, $G = B$ e $E = C$ \\
+    $H_3 = (C \OR A) \IMP (B \OR C)$                           & Modus ponens (MP) em $H_1$ e $H_2$ \\
+    $H_4 = (C \OR A)$                                          & $ \beta \ISINT (C \OR A)$ \\
+    $H_5 = (B \OR C)$                                          & MP em $H_4$ e $H_3$ $\QED$ \\
+  \hline
+\end{tabular}
+
+\SKIP
+
+\begin{easylist}
+
+  & Proposição 2: temos que $\ISINT (P \OR \NOT P)$.
+
+\end{easylist}
+
+\SKIP
+
+Demonstração:
+
+\begin{tabular}{p{0.6\textwidth}p{0.4\textwidth}}
+  \hline
+    $H_1 = ( (P \OR P) \IMP P) \IMP ( (\NOT P \OR (P \OR P) ) \IMP (P \OR \NOT P) )$       & Axioma 3, $H = (P \OR P)$, $G = P$ e $E = \NOT P$ \\
+    $H_2 = (P \OR P) \IMP P$                                   & Axioma 1, $H = P$ \\
+    $H_3 = (\NOT P \OR (P \OR P) ) \IMP (P \OR \NOT P)$        & MP em $H_2$ e $H_1$ \\
+    $H_4 = \NOT P \OR (P \OR P)$                            & Axioma 2, $H = P$ e $G = P$ \\
+    $H_5 = (P \OR \NOT P)$                                     & MP em $H_4$ e $H_3$ $\QED$ \\
+  \hline
+\end{tabular}
+
+\SKIP
+
+\begin{easylist}
+
+  & Proposição 3, regra da substituição: sejam $\beta$ um conjunto de hipóteses e $H$ uma fórmula da lógica proposicional, tais que $\beta \ISINT H$. Seja $\{ P_1, \dots, P_n\}$ um conjunto de símbolos proposicionais que ocorrem em $H$ mas não ocorrem em $\beta$, seja $G$ a fórmula obtida de $H$ substituindo $P_1, \dots, P_n$ pelas fórmulas $E_1, \dots, E_n$ respectivamente. Temos que $\beta \ISINT G$.
+  && Para entender o porque de evitar substituir símbolos que ocorrem em $\beta$, observe os seguintes exemplos.
+  &&& Considere $\beta = \{P_1, P_2\}$ e a substituição $P_1 = P$ e $P_2 = \; \NOT P$. Acabamos de obter resultados contraditórios entre si, o que torna nosso sistema inconsistente.
+  &&& Considere $\beta = \{P_1, P_2, P_1 \AND P_2\}$ e a substituição $P_1 = P$ e $P_2 = \; \NOT P$. Acabamos de demonstrar a contradição $(P \AND \NOT P)$ o que torna nosso sistema incorreto. 
+
+\clearpage
+
+  & Proposição 4a: temos que $\ISINT (P \IMP \NOT\NOT P)$.
+
+\end{easylist}
+
+\SKIP
+
+Demonstração:
+
+\begin{tabular}{p{0.5\textwidth}p{0.5\textwidth}}
+  \hline
+    $H_1 = P \OR \NOT P$                                       & Prop. 2 \\
+    $H_2 = \;\NOT P \OR \NOT\NOT P$                            & Regra da Substituição (RS) em $H_1$ \\
+    $H_3 = P \IMP \NOT\NOT P$                                  & Mudança de notação (MN) em $H_2$ $\QED$ \\
+  \hline
+\end{tabular}
+
+\SKIP
+
+\begin{easylist}
+
+  & Proposição 4b: temos que $\ISINT (\NOT\NOT P \IMP P)$.
+
+\end{easylist}
+
+\SKIP
+
+Demonstração:
+
+\begin{tabular}{p{0.6\textwidth}p{0.4\textwidth}}
+  \hline
+    $H_1 = P \IMP \NOT\NOT P$                                  & Prop 4a \\
+    $H_2 = \;\NOT P \IMP \NOT\NOT\NOT P$                       & RS em $H_1$ \\
+    $H_3 = (\NOT P \IMP \NOT\NOT\NOT P) \IMP ( (P \OR \NOT P) \IMP (\NOT\NOT\NOT P \OR P) )$       & Axioma 3, $H = \NOT P$, $G = \NOT\NOT\NOT P$ e $E = P$ \\
+    $H_4 = (P \OR \NOT P) \IMP (\NOT\NOT\NOT P \OR P)$         & MP em $H_2$ e $H_3$ \\
+    $H_5 = P \OR \NOT P$                                       & Prop. 2 \\
+    $H_6 = \NOT\NOT\NOT P \OR P$                               & MP em $H_5$ e $H_4$ \\
+    $H_3 = \NOT\NOT P \IMP P$                                  & MN em $H_6$ $\QED$ \\
+  \hline
+\end{tabular}
+
+\SKIP
+  
+\begin{easylist}
+
+  & Proposição 5: temos que $\ISINT (P \IMP P)$.
+
+\end{easylist}
+
+\SKIP
+
+Demonstração:
+
+\begin{tabular}{p{0.6\textwidth}p{0.4\textwidth}}
+  \hline
+    $H_1 = P \IMP \NOT\NOT P$                                  & Prop. 4a \\
+    $H_2 = (P \IMP \NOT\NOT P) \IMP ( (P \OR P) \IMP (\NOT\NOT P \OR P) )$       & Axioma 3, $H = P$, $G = \NOT\NOT P$ e $E = P$ \\
+    $H_3 = (P \OR P) \IMP (\NOT\NOT P \OR P)$                  & MP em $H_1$ e $H_2$ \\
+    $H_4 = (P \IMP \NOT\NOT P) \IMP ( (\NOT\NOT P \OR P) \IMP (\NOT\NOT P \OR \NOT\NOT P) )$       & Axioma 3, $H = P$, $G = \NOT\NOT P$ e $E = \NOT\NOT P$ \\
+    $H_5 = (\NOT\NOT P \OR P) \IMP (\NOT\NOT P \OR \NOT\NOT P)$       & MP em $H_1$ e $H_4$ \\
+    $H_6 = \NOT P \OR (P \OR P)$                               & Axioma 2, $H = P$ e $G = P$ \\
+    $H_7 = (\NOT\NOT P \OR P) \OR \NOT P$                      & Prop. 1 em $H_3$ e $H_6$\\
+    $H_8 = \NOT P \IMP \NOT\NOT\NOT P$                         & RS em Prop. 4a \\
+    $H_9 = \NOT\NOT\NOT P \OR (\NOT\NOT P \OR P)$              & Prop. 1 em $H_8$ e $H_7$ \\
+    $H_{10} = (\NOT\NOT P \OR \NOT\NOT P) \OR  \NOT\NOT\NOT P$  & Prop. 1 em $H_5$ e $H_9$ \\
+    $H_{11} = \NOT\NOT\NOT P \IMP \NOT P$                       & RS em Prop. 4b \\
+    $H_{12} = \NOT P \OR (\NOT\NOT P \OR \NOT\NOT P)$           & Prop. 1 em $H_{11}$ e $H_{10}$ \\
+    $H_{13} = (\NOT\NOT P \OR \NOT\NOT P) \IMP \NOT\NOT P$      & Axioma 1, $H = \NOT\NOT P$ \\
+    $H_{14} = \NOT\NOT P \OR \NOT P$                            & Prop. 1 em $H_{13}$ e $H_{12}$ \\
+    $H_{15} = \NOT\NOT\NOT P \OR \NOT\NOT P$                    & RS em $H_{14}$ \\
+    $H_{16} = \NOT\NOT P \IMP P$                                & Prop. 4b \\
+    $H_{17} = P \OR \NOT\NOT\NOT P$                             & Prop. 1 em $H_{16}$ e $H_{15}$ \\
+    $H_{18} = \NOT P \OR P$                                     & Prop. 1 em $H_{11}$ e $H_{17}$ \\
+    $H_{19} = P \IMP P$                                         & MN em $H_{18}$ $\QED$ \\
+  \hline
+\end{tabular}
+
+\SKIP
+  
+\begin{easylist}
+
+  & Proposição 6, comutatividade: temos que \[ \ISINT (A \OR B) \IMP (B \OR A). \]
+
+\end{easylist}
+
+Demonstração:
+
+\begin{tabular}{p{0.6\textwidth}p{0.4\textwidth}}
+  \hline
+    $H_1 = B \IMP B$                                           & RS em Prop. 5 \\
+    $H_2 = (B \IMP B) \IMP ( (A \OR B) \IMP (B \OR A) )$       & Axioma 3, $H = B$, $G = B$ e $E = A$ \\
+    $H_3 = (A \OR B) \IMP (B \OR A)$                           & MP em $H_1$ e $H_2$ $\QED$ \\
+  \hline
+\end{tabular}
+
+\SKIP
+  
+\begin{easylist}
+
+  & Proposição 6b: sejam $\beta$ um conjunto de hipóteses, e $A$ e $B$ duas fórmulas da lógica proposicional. Temos que \[ \mbox{ se } \beta \ISINT (A \OR B) \mbox{ então } \beta \ISINT (B \OR A). \]
+
+  & Proposição 7: sejam $\beta$ um conjunto de hipóteses, e $A$, $B$ e $C$ três fórmulas da lógica proposicional. Temos que \[ \mbox{ se } \beta \ISINT (A \IMP B) \mbox{ e } \beta \ISINT (B \IMP C) \mbox{ então } \beta \ISINT (A \IMP C). \]
+
+\end{easylist}
+
+Demonstração:
+
+\begin{tabular}{p{0.6\textwidth}p{0.4\textwidth}}
+  \hline
+    $H_1 = B \IMP C$                                           & $ \beta \ISINT (B \IMP C)$ \\
+    $H_2 = \NOT A \OR B$                                       & $ \beta \ISINT (A \IMP B)$ \\
+    $H_3 = C \OR \NOT A$                                       & Prop. 1 em $H_1$ e $H_2$ \\
+    $H_4 = (C \OR \NOT A) \IMP (\NOT A \OR C)$                 & RS em Prop. 6 \\
+    $H_5 = \NOT A \OR C$                                       & MP em $H_3$ e $H_4$ \\
+    $H_6 = A \IMP C$                                           & MN em $H_5$ $\QED$ \\
+  \hline
+\end{tabular}
+
+\SKIP
+
+\begin{easylist}
+
+  & Proposição 8: sejam $\beta$ um conjunto de hipóteses, e $A$, $B$ e $C$ três fórmulas da lógica proposicional. Temos que \[ \mbox{ se } \beta \ISINT (A \IMP C) \mbox{ e } \beta \ISINT (B \IMP C) \mbox{ então } \beta \ISINT ( (A \OR B) \IMP C). \]
+
+\end{easylist}
+
+Demonstração:
+
+\begin{tabular}{p{0.6\textwidth}p{0.4\textwidth}}
+  \hline
+    $H_1 = B \IMP C$                                           & $ \beta \ISINT (B \IMP C)$ \\
+    $H_2 = (B \IMP C) \IMP ( (A \OR B) \IMP (C \OR A) )$       & Axioma 3, $H = B$, $G = C$ e $E = A$ \\
+    $H_3 = (A \OR B) \IMP (C \OR A)$                           & MP em $H_1$ e $H_2$ \\
+    $H_4 = A \IMP C$                                           & $ \beta \ISINT (A \IMP C)$ \\
+    $H_5 = (A \IMP C) \IMP ( (C \OR A) \IMP (C \OR C) )$       & Axioma 3, $H = A$, $G = C$ e $E = C$ \\
+    $H_6 = (C \OR A) \IMP (C \OR C)$                           & MP em $H_4$ e $H_5$ \\
+    $H_7 = (A \OR B) \IMP (C \OR C)$                           & Prop. 7 em $H_3$ e $H_6$ \\
+    $H_8 = (C \OR C) \IMP C$                                   & Axioma 1, $H = C$ \\
+    $H_9 = (A \OR B) \IMP C$                                   & Prop. 7 em $H_7$ e $H_8$ $\QED$ \\
+  \hline
+\end{tabular}
+
+\SKIP
+
+\begin{easylist}
+
+  & Proposição 9: sejam $\beta$ um conjunto de hipóteses, e $A$, $B$ e $C$ três fórmulas da lógica proposicional. Temos que \[ \mbox{ se } \beta \ISINT (A \IMP C) \mbox{ e } \beta \ISINT (\NOT A \IMP C) \mbox{ então } \beta \ISINT  C. \]
+
+\end{easylist}
+
+Demonstração:
+
+\begin{tabular}{p{0.6\textwidth}p{0.4\textwidth}}
+  \hline
+    $H_1 = A \IMP C$                                           & $ \beta \ISINT (A \IMP C)$ \\
+    $H_2 = \NOT A \IMP C$                                      & $ \beta \ISINT (\NOT A \IMP C)$ \\
+    $H_3 = (A \OR \NOT A) \IMP C$                              & Prop. 8 em $H_1$ e $H_2$ \\
+    $H_4 = (A \OR \NOT A)$                                     & Prop. 2 \\
+    $H_5 = C$                                                  & MP em $H_4$ e $H_3$ $\QED$ \\
+  \hline
+\end{tabular}
+
+\SKIP
+
+\begin{easylist}
+
+  & Proposição 10: sejam $\beta$ um conjunto de hipóteses, e $A$, $B$ e $C$ três fórmulas da lógica proposicional. Temos que \[ \mbox{ se } \beta \ISINT (A \IMP B) \mbox{ então } \beta \ISINT (A \IMP (C \OR B) ) \mbox{ e } \beta \ISINT  (A \IMP (B \OR C) ). \]
+
+\end{easylist}
+
+Demonstração:
+
+\begin{tabular}{p{0.6\textwidth}p{0.4\textwidth}}
+  \hline
+    $H_1 = A \IMP B$                                           & $ \beta \ISINT (A \IMP B)$ \\
+    $H_2 = B \IMP (C \OR B)$                                   & Axioma 2, $H = B$ e $G = C$ \\
+    $H_3 = A \IMP (C \OR B)$                                   & Prop. 7 em $H_1$ e $H_2$ \\
+    $H_4 = (C \OR B) \IMP (B \OR C)$                           & Prop. 6 \\
+    $H_5 = A \IMP (B \OR C)$                                   & Prop. 7 em $H_3$ e $H_4$ $\QED$ \\
+  \hline
+\end{tabular}
+
+\SKIP
+
+\begin{easylist}
+
+  & Proposição 11, associatividade: temos que \[\ISINT ( (A \OR B) \OR C ) \IMP (A \OR (B \OR C) ).\]
+
+\end{easylist}
+
+Demonstração:
+
+\begin{tabular}{p{0.6\textwidth}p{0.4\textwidth}}
+  \hline
+    $H_1 = A \IMP A$                                           & Prop. 5 \\
+    $H_2 = A \IMP ( A \OR (B \OR C) )$                         & RS, Prop 10 em $H_1$ \\
+    $H_3 = B \IMP B$                                           & Prop. 5 \\
+    $H_4 = B \IMP (B \OR C)$                                   & Prop 10 em $H_3$ \\
+    $H_5 = B \IMP ( A \OR (B \OR C) )$                         & Prop 10 em $H_4$ \\
+    $H_6 = (A \OR B) \IMP ( A \OR (B \OR C) )$                 & Prop 8 em $H_2$ e $H_5$ \\
+    $H_7 = C \IMP C$                                           & Prop. 5 \\
+    $H_8 = C \IMP (B \OR C)$                                   & Prop 10 em $H_7$ \\
+    $H_9 = C \IMP ( A \OR (B \OR C) )$                         & Prop 10 em $H_8$ \\
+    $H_{10} = ( (A \OR B) \OR C ) \IMP ( A \OR (B \OR C) )$     & Prop 8 em $H_6$ e $H_9$ $\QED$ \\
+  \hline
+\end{tabular}
+
+\SKIP
+
+\begin{easylist}
+
+  & Proposição 12, associatividade: sejam $\beta$ um conjunto de hipóteses, e $A$, $B$ e $C$ três fórmulas da lógica proposicional. Temos que \[ \mbox{ se } \beta \ISINT ( (A \OR B) \OR C ) \mbox{ então } \beta \ISINT (A \OR (B \OR C) ). \]
+
+\SKIP
+  
+  & Proposição 13: sejam $\beta$ um conjunto de hipóteses, e $A$, $B$ e $C$ três fórmulas da lógica proposicional. Temos que \[ \mbox{ se } \beta \ISINT (A \IMP B) \mbox{ e } \beta \ISINT ( A \IMP (B \IMP C) ) \mbox{ então } \beta \ISINT (A \IMP C). \]
+
+
+\end{easylist}
+
+Demonstração:
+
+\begin{tabular}{p{0.6\textwidth}p{0.4\textwidth}}
+  \hline
+    $H_1 = A \IMP B$                                           & $ \beta \ISINT (A \IMP B)$ \\
+    $H_2 = A \IMP (B \IMP C)$                                  & $ \beta \ISINT ( A \IMP (B \IMP C) )$ \\
+    $H_3 = \NOT A \OR (\NOT B \OR C)$                          & MN em $H_2$ \\
+    $H_4 = (\NOT B \OR C) \OR \NOT A$                          & Prop. 6b em $H_3$ \\
+    $H_5 = \NOT B \OR (C \OR \NOT A)$                          & Prop. 12 em $H_4$ \\
+    $H_6 = B \IMP (C \OR \NOT A)$                              & MN em $H_5$ \\
+    $H_7 = A \IMP (C \OR \NOT A)$                              & Prop. 7 em $H_1$ e $H_6$ \\
+    $H_8 = \NOT A \OR (C \OR \NOT A)$                          & MN em $H_7$ \\
+    $H_9 = (C \OR \NOT A) \OR \NOT A$                          & Prop. 6b em $H_8$ \\
+    $H_{10} = C \OR (\NOT A \OR \NOT A)$                        & Prop. 12 em $H_9$ \\
+    $H_{11} = (\NOT A \OR \NOT A) \IMP \NOT A$                  & Axioma 1, $H = \NOT A$ \\
+    $H_{12} = \NOT A \OR C$                                     & Prop. 1 em $H_{11}$ e $H_{10}$ \\
+    $H_{13} = A \IMP C$                                         & MN em $H_{12}$ $\QED$ \\
+  \hline
+\end{tabular}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exercícios}
+
+%$ \NOT \; \OR \; \AND \; \IMP \; \BIC$
+
+\begin{enumerate}
+  \item Demonstre os teoremas abaixo no sistema axiomático Pa. Use os axiomas e proposições vistos em aula.
+    \begin{enumerate}
+      \item $\ISINT (\NOT P \OR P)$
+      \item $\ISINT (\NOT P \OR \NOT\NOT P)$
+      \item $\ISINT ( H \IMP (H \OR G) )$
+      \item $\ISINT ( H \IMP (G \IMP H) )$
+      \item $\ISINT ( (H \IMP G) \IMP (\NOT G \IMP \NOT H) )$
+    \end{enumerate}
+  \item Demonstre os teoremas abaixo no sistema axiomático Pa. Use os axiomas e proposições vistos em aula.
+    \begin{enumerate}
+      \item Se $\beta \ISINT (A \IMP B)$ e $\beta \ISINT (C \OR A)$ então $\beta \ISINT (C \OR B)$
+      \item Se $\beta \ISINT (A \IMP \NOT B)$ e $\beta \ISINT (C \IMP A)$ então $\beta \ISINT (B \IMP \NOT C)$
+    \end{enumerate}
+
+  \item Considere um sistema axiomático igual ao Pa mais o axioma 4 dado abaixo. Mostre que se $\beta \ISINT H$ então $\beta \ISINT \NOT H$.
+
+    Axioma 4: $H \IMP (H \OR G)$
+    
+\end{enumerate}
+
+    
 
 

@@ -18,6 +18,9 @@ $(FILENAME).pdf: *.tex
 	pdflatex $(FILENAME).tex
 	evince $(FILENAME).pdf
 
+show:
+	evince $(FILENAME).pdf
+
 $(FILENAME).dvi: clean $(FILENAME).tex
 	echo "Running latex..."
 	latex $(FILENAME).tex

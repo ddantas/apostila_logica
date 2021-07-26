@@ -52,6 +52,10 @@ Style2*=$\bullet$ ,Style3*=$\circ$ ,Style4*=\tiny$\blacksquare$ )
 %\usepackage[tableaux]{prooftrees}
 \usepackage{prooftrees}
 
+% Adicionado para fazer um teste
+% ddantas, 26/06/2021
+\usepackage{blindtext}
+
 %formatacao
 
 \newcommand{\TAB}{{\hspace*{1cm}}}
@@ -133,10 +137,12 @@ Style2*=$\bullet$ ,Style3*=$\circ$ ,Style4*=\tiny$\blacksquare$ )
 % lógica
 \newcommand{\swungdash}{\raisebox{-2.25ex}{\scalebox{2}{\~{}}}}
 
-%\newcommand{\NOT}{\sim}
-\newcommand{\NOT}{\swungdash}
-\newcommand{\OR}{\lor}
-\newcommand{\AND}{\land}
+% To use a symbol for a different purpose, you can use the
+% \mathord, \mathop, \mathbin, \mathrel, \mathopen, \mathclose, and \mathpunct
+\newcommand{\NOT}{\mathord{\sim}}
+%\newcommand{\NOT}{\swungdash}
+\newcommand{\OR}{\;\lor\;}
+\newcommand{\AND}{\;\land\;}
 \newcommand{\NAND}{\barwedge}
 \newcommand{\IMP}{\rightarrow}
 \newcommand{\BIC}{\leftrightarrow}
@@ -154,7 +160,7 @@ Style2*=$\bullet$ ,Style3*=$\circ$ ,Style4*=\tiny$\blacksquare$ )
 
 \newcommand{\QED}{\blacksquare}
 \newcommand{\SKIP}{\vspace{0.5cm}}
-\newcommand{\EXERCICIOS}{\SKIP {\bf Exercícios}}
+\newcommand{\EXERCICIOS}{{\noindent \bf \hspace{9pt} Exercícios}}
 
 
 \newcommand{\COMP}{\operatorname{comp}}
