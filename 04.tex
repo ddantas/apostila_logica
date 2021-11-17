@@ -188,7 +188,16 @@ Portanto, a suposição inicial de que existe interpretação $I$ tal que $I(H) 
 \end{figure}
 
   & Construção de um tableau semântico: se dá aplicando alguma regra de dedução uma vez para cada linha que não seja um literal (símbolo proposicional ou sua negação). O tableau resultante tende a ficar mais simples se aplicarmos primeiro as regras de dedução que não geram bifurcações $(R_1, R_5, R_7, R_8)$.
-  && Exemplo: considere o conjunto de fórmulas: $\{A \IMP B, \NOT(A \OR B),  \NOT (C \IMP A)\}$. Encontre o tableau semântico iniciado com esse conjunto de fórmulas.
+&& Exemplo: considere o conjunto de fórmulas $\beta = \{P \OR (Q \OR \NOT R), P \IMP\NOT R, Q \IMP \NOT R\}$. Verifique se $\beta \ISINT \NOT R$.
+
+%$\beta = \{A \IMP B, \NOT(A \OR B),  \NOT (C \IMP A)\}$. Verifique se $\beta \ISINT \NOT R$.
+
+&&& Uma possível solução seria montar a árvore semântica de $\NOT(    (P \OR (Q \OR \NOT R)) \AND (P \IMP\NOT R) \AND (Q \IMP \NOT R)  \IMP \NOT R)$.
+
+%$\NOT (    (  (A \IMP B) \AND \NOT(A \OR B) \AND \NOT (C \IMP A)  ) \IMP \NOT R    )$.
+
+&&& Uma solução equivalente é listar as hipóteses de $\beta$ seguidas da negação da conclusão.
+%Encontre o tableau semântico iniciado com esse conjunto de fórmulas.
 
 \end{easylist}
 
@@ -253,11 +262,11 @@ Portanto, a suposição inicial de que existe interpretação $I$ tal que $I(H) 
 \begin{prooftree}
   {
     to prove={\{P \OR (Q \OR \NOT R), P \IMP\NOT R, Q \IMP \NOT R\}
-      \vdash{}{} \NOT R ~P \text{\~{}}P}
+      \vdash{}{} \NOT R}
   }
-  [P \OR (Q \OR \NOT R), just=Ass, checked
-    [P \IMP \NOT R, just=Ass, checked
-      [Q \IMP \NOT R, just=Ass, checked,name=last premise
+  [P \OR (Q \OR \NOT R), just=Hip, checked
+    [P \IMP \NOT R, just=Hip, checked
+      [Q \IMP \NOT R, just=Hip, checked,name=last premise
         [\NOT\NOT R, just={$\NOT$ Conc},name=not conc
           [P, just={$\OR$ Elim:!uuuu}
             [\NOT P, close={:!u,!c}]
@@ -321,7 +330,7 @@ Portanto, a suposição inicial de que existe interpretação $I$ tal que $I(H) 
                 [Q \IMP Q_1, just=$R_1$ em 5, checked
                   [P, just=$R_1$ em 7
                     [Q, just=$R_1$ em 7
-                      [\NOT(P \AND Q_1), just=$R_3$ em 5, checked
+                      [\NOT(P \AND Q_1), just=$R_3$ em 6, checked
                         [\NOT Q, just=$R_3$ em 8
                           [\NOT P, just=$R_6$ em 11,   close={12,10}]
                           [\NOT Q_1, just=$R_6$ em 11, close={12,10}]
@@ -371,7 +380,7 @@ Portanto, a suposição inicial de que existe interpretação $I$ tal que $I(H) 
                 [Q \IMP Q_1, just=$R_1$ em 5, checked
                   [P, just=$R_1$ em 7
                     [Q, just=$R_1$ em 7
-                      [\NOT(P \AND Q_1), just=$R_3$ em 5, checked
+                      [\NOT(P \AND Q_1), just=$R_3$ em 6, checked
                         [\NOT Q, just=$R_3$ em 8,      close={12,10}]
                         [Q_1,
                           [\NOT P, just=$R_6$ em 11,   close={13,9}]
