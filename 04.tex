@@ -420,6 +420,27 @@ Portanto, a suposição inicial de que existe interpretação $I$ tal que $I(H) 
 \end{easylist}
 
 
+\subsection{Consequência lógica em tableaux semânticos}
+
+\begin{easylist}
+
+& Dada uma fórmula $H$ e um conjunto de hipóteses $\beta = \{A_1, A_2, \dots, A_n\}$, dizemos que $H$ é uma consequência lógica de $\beta$ ($\beta \ISINT H$) se existe uma prova de $(A_1, A_2, \dots, A_n) \IMP H$.
+
+&& Exemplo: Considere as sentenças
+&&& $P = $ Guga é determinado
+&&& $Q = $ Guga é inteligente
+&&& $(P \AND R) \IMP \NOT P_1 = $ Se Guga é determinado e atleta, então ele não é um perdedor
+&&& $Q_1 \IMP R$ Guga é atleta se ele é amante de tênis
+&&& $Q \IMP R_1$ Guga é amante de tênis se ele é inteligente
+
+A afirmação abaixo é conseqência lógica das anteriores?
+
+&&& $\NOT P_1$ Guga não é um perdedor
+
+
+\end{easylist}
+
+
 \subsection{Prova de que um conjunto de fórmulas é insatisfatível}
 
 \begin{easylist}
